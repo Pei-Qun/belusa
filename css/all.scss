@@ -1,0 +1,76 @@
+*,body,h1,h2,h3,h4,h5{
+  font-family:'Microsoft JhengHei'
+}
+#app{
+  height: 100vh;
+  padding: 80px 0;
+  .ordered{
+    padding: 15px;
+    max-height: 30vh;
+    background-color: #f6f6f6;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    .area{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .hot-page {
+    .con:not(.hot){
+      display: none;
+    }      
+  }
+  footer{
+    position: absolute;
+    top: 100%;
+    opacity: 0;
+    z-index: -1;
+  }
+  .list{
+    .mb-100{
+      margin-bottom: 100px;
+    }
+    .con{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+      input[type="checkbox"] {
+        width: 30px;
+        height: 30px;
+        background-color: #fff;
+        flex: 0 0 30px;
+      }
+      label {
+        margin-bottom: 0;
+        flex: 1;
+        text-align: center;
+      }
+      .num-edit{
+        flex: 0 0 90px;
+        text-align: right;
+        color: #999;
+        .btn-light{
+          box-shadow: 1px 1px 6px #aaa;
+          box-sizing: border-box;
+        }
+        .disable{
+          color: #aaa;
+        }
+        span{
+          width: 45px;
+          display: inline-block;
+          width: 20px;
+          text-align: center;
+          color: #333;
+        }
+      }
+    }
+  }
+  
+}
