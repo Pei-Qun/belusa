@@ -1,13 +1,61 @@
 *,body,h1,h2,h3,h4,h5{
   font-family:'Microsoft JhengHei'
 }
+$pink: #fe878f;
+$red: #ff6670;
+$yellow: #ffe26d;
+$light-yellow: #fcf3d7;
+$blue: #50c3de;
 #app{
-  height: 100vh;
   padding: 80px 0;
+  background-image: url(../img/bg3.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right bottom;
+  /* 配色 */
+  .btn-red{
+    background-color: $red;
+    color: #fff;
+  }
+  .btn-yellow{
+    background-color: $yellow;
+  }
+  .thead-pink{
+    background-color: $pink;
+  }
+  /* 選單 */
+  .navbar{
+    @media (max-width: 992px){
+      background-color: $red;
+      padding: 0;
+      #belusa-nav{
+        background-color: #f6f6f6;
+        padding: 0 15px;
+      }
+      .navbar-brand{
+        color: #fff;
+        margin: .5rem 1rem;
+      }
+      .navbar-toggler{
+        background-color: $light-yellow;
+        margin: .5rem 1rem;
+      }
+      .nav-item{
+        .nav-link{
+          color: #333;
+        }
+      }
+      .nav-footer{
+        margin-bottom: 5px;
+      }
+    }
+    
+  }
   .ordered{
     padding: 15px;
     max-height: 30vh;
-    background-color: #f6f6f6;
+    background-color: $light-yellow;
+    border-top: 5px solid $pink;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -40,6 +88,11 @@
       margin-bottom: 10px;
       border-radius: 8px;
       border: 2px solid #ddd;
+      
+      background-image: url(../img/bg3-1.jpg);
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: right bottom;
       input[type="checkbox"] {
         width: 30px;
         height: 30px;
@@ -52,9 +105,9 @@
         text-align: center;
       }
       .num-edit{
-        flex: 0 0 90px;
+        flex: 0 0 100px;
         text-align: right;
-        color: #999;
+        color: #333;
         .btn-light{
           box-shadow: 1px 1px 6px #aaa;
           box-sizing: border-box;

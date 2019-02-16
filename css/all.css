@@ -1,16 +1,61 @@
+@charset "UTF-8";
 *, body, h1, h2, h3, h4, h5 {
   font-family: 'Microsoft JhengHei';
 }
 
 #app {
-  height: 100vh;
   padding: 80px 0;
+  background-image: url(../img/bg3.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right bottom;
+  /* 配色 */
+  /* 選單 */
+}
+
+#app .btn-red {
+  background-color: #ff6670;
+  color: #fff;
+}
+
+#app .btn-yellow {
+  background-color: #ffe26d;
+}
+
+#app .thead-pink {
+  background-color: #fe878f;
+}
+
+@media (max-width: 992px) {
+  #app .navbar {
+    background-color: #ff6670;
+    padding: 0;
+  }
+  #app .navbar #belusa-nav {
+    background-color: #f6f6f6;
+    padding: 0 15px;
+  }
+  #app .navbar .navbar-brand {
+    color: #fff;
+    margin: .5rem 1rem;
+  }
+  #app .navbar .navbar-toggler {
+    background-color: #fcf3d7;
+    margin: .5rem 1rem;
+  }
+  #app .navbar .nav-item .nav-link {
+    color: #333;
+  }
+  #app .navbar .nav-footer {
+    margin-bottom: 5px;
+  }
 }
 
 #app .ordered {
   padding: 15px;
   max-height: 30vh;
-  background-color: #f6f6f6;
+  background-color: #fcf3d7;
+  border-top: 5px solid #fe878f;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -57,6 +102,10 @@
   margin-bottom: 10px;
   border-radius: 8px;
   border: 2px solid #ddd;
+  background-image: url(../img/bg3-1.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right bottom;
 }
 
 #app .list .con input[type="checkbox"] {
@@ -78,10 +127,10 @@
 
 #app .list .con .num-edit {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 90px;
-          flex: 0 0 90px;
+      -ms-flex: 0 0 100px;
+          flex: 0 0 100px;
   text-align: right;
-  color: #999;
+  color: #333;
 }
 
 #app .list .con .num-edit .btn-light {
