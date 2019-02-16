@@ -7,7 +7,7 @@
   <title>貝稑莎點餐平台</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" href="css/all.css?20190217">
 </head>
 <body>
   <div id="app">
@@ -99,7 +99,27 @@
                   <td>{{ item.num }}</td>
                   <td>{{ item.num*item.cash }}元</td>
                 </tr>
-              </tbody>     
+              </tbody>
+              <tfoot>
+                <tr class="thead-pink">
+                  <td colspan="3">請選擇配料</td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <div class="sauce">
+                      <label v-for="(item, key) in sauce" :for="'sauce'+key" v-if="!tempData.nosauce" 
+                        :key="key" :class="{'select':item.ordered,'sau-btn':true}">
+                        <input type="checkbox" v-model="item.ordered" :id="'sauce'+key">
+                        {{ item.name }}
+                      </label>
+                      <label for="n-sauce" class="n-sauce">
+                        <input type="checkbox" id="n-sauce" v-model="tempData.nosauce">
+                        不要任何配料
+                      </label>
+                    </div>
+                  </td>
+                </tr>
+              </tfoot>     
             </table>
             <p v-else>尚未點餐</p>
             <p class="text-danger">總共 {{total}} 元</p>
@@ -120,6 +140,11 @@
         <p v-for="(item, key) in order" v-if="item.ordered">
           {{ item.name }}　x　{{ item.num }} 份
         </p>
+        <br>配料:
+        <p class="sauce-exit" v-if="!tempData.nosauce">
+          <span v-for="(item, key) in sauce" v-if="item.ordered">{{ item.name }}、</span>
+        </p>
+        <p v-if="tempData.nosauce">不要任何配料</p>
         <p>
           總計 {{total}} 元
         </p>
@@ -130,10 +155,9 @@
   <script src="js/jquery-2.0.0.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/vue.js"></script>
-  <script src="js/data.js"></script>
+  <script src="js/data.js?20190217"></script>
   <script>
     new Clipboard( "#copy" )
-   
   </script>
 </body>
 </html>

@@ -3,8 +3,35 @@ new Vue({
   data: {
     total:0,
     tempData: {
-      pages: 'hot'
+      pages: 'hot',
+      nosauce: false,
     },
+    sauce: [
+      {
+        name: '胡椒粉',
+        ordered: false,
+      },
+      {
+        name: '辣椒粉',
+        ordered: false,
+      },
+      {
+        name: '甘梅粉',
+        ordered: false,
+      },
+      {
+        name: '洋蔥',
+        ordered: false,
+      },
+      {
+        name: '蒜頭',
+        ordered: false,
+      },
+      {
+        name: '九層塔',
+        ordered: false,
+      },
+    ],
     order:[
       {
         name: '雞軟骨(大份)',
@@ -711,6 +738,9 @@ new Vue({
         vm.order.forEach(element => {
           element.ordered = false
         });
+        vm.sauce.forEach(element => {
+          element.ordered = false
+        });
         // $('#order-list-modal').modal('hide')
       }
     },
@@ -718,10 +748,20 @@ new Vue({
       this.tempData.pages = page
     },
     sendMsg(){
-      var r = confirm("餐點已複製到剪貼簿，請直接到貝稑莎的 LINE 貼上");
-      if (r == true) {
-        window.location.href = 'https://line.me/ti/p/KUQIYFYj8l';
-      }  
+      const vm = this;
+      const ext = $('.sauce-exit').html();
+      if( ext == "<!----><!----><!----><!----><!----><!---->" ){
+        alert('尚未選取配料')
+      } else {
+        setTimeout(function(){
+          var r = confirm("餐點已複製到剪貼簿，請直接到貝稑莎的 LINE '貼上'");
+          if (r == true) {
+            window.location.href = 'https://line.me/ti/p/KUQIYFYj8l';
+          }
+        }, 300 )
+      }
+      
+        
     }
   },
   created() {
