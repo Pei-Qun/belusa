@@ -42,6 +42,14 @@ new Vue({
         hot: false,
 	      cash: 60,
       },{
+        name: '雞軟骨(小份)',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '綜合',
+        hot: false,
+        cash: 40,
+      },{
         name: '雙飛雞翅',
         ordered: false,
         num: 1,
@@ -74,6 +82,14 @@ new Vue({
         hot: true,
 	      cash: 60,
       },{
+        name: '無骨鹽酥雞(小份)',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '綜合',
+        hot: false,
+        cash: 40,
+      },{
         name: '三角骨(大份)',
         ordered: false,
         num: 1,
@@ -81,6 +97,14 @@ new Vue({
         class: '綜合',
         hot: true,
 	      cash: 60,
+      },{
+        name: '三角骨(小份)',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '綜合',
+        hot: false,
+        cash: 40,
       },{
         name: '深海大魷魚(大份)',
         ordered: false,
@@ -90,6 +114,14 @@ new Vue({
         hot: true,
 	      cash: 60,
       },{
+        name: '深海大魷魚(小份)',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '綜合',
+        hot: false,
+        cash: 40,
+      },{
         name: '紅麴雞皮(大份)',
         ordered: false,
         num: 1,
@@ -98,6 +130,14 @@ new Vue({
         hot: true,
 	      cash: 50,
       },{
+        name: '紅麴雞皮(小份)',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '綜合',
+        hot: false,
+        cash: 30,
+      },{
         name: '地瓜(甘梅粉)',
         ordered: false,
         num: 1,
@@ -105,6 +145,14 @@ new Vue({
         class: '綜合',
         hot: true,
 	      cash: 50,
+      },{
+        name: '地瓜(甘梅粉 小份)',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '綜合',
+        hot: false,
+        cash: 30,
       },{
         name: '小熱狗(2條)',
         ordered: false,
