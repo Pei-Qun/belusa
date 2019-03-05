@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="keywords" content="貝稑莎,鹹酥雞,高雄鹹酥雞,推薦鹹酥雞,鹽酥雞,炸物" />
+  <meta name="description" content="貝稑莎鹽酥雞點餐系統" />
+  <meta name="copyright" CONTENT="本網頁著作權貝稑莎所有">
+  <meta name="URL" content="https://pei-qun.github.io/belusa/">
+
   <title>貝稑莎點餐平台</title>
+  
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/all.css?20190305">
+  <link rel="stylesheet" href="css/all.css?20190304">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <div id="app">
@@ -163,7 +170,7 @@
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
               </div>
               <input type="text" class="form-control" placeholder="搜尋商品名稱"
-              v-model="tempData.searchVal">
+              v-model="tempData.searchVal" @keyup.enter="closeSearchModal">
             </div>
           </div>
         </div>
@@ -189,7 +196,7 @@
   <script src="js/jquery-2.0.0.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/vue.js"></script>
-  <script src="js/data.js?20190305"></script>
+  <script src="js/data.js?20190304"></script>
   <script>
     new Clipboard( "#copy" )
   </script>

@@ -926,6 +926,9 @@ new Vue({
     },
     closeSearch(){
       this.tempData.searchVal = '';
+    },
+    closeSearchModal(){
+      $('#SearchModal').modal('hide')      
     }
   },
   created() {
