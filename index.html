@@ -7,15 +7,14 @@
   <title>貝稑莎點餐平台</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/all.css?20190217">
+  <link rel="stylesheet" href="css/all.css?20190305">
 </head>
 <body>
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
       <a class="navbar-brand" href="#">
         貝稑莎 - 
-        <small v-if="tempData.pages=='hot'">熱門餐點</small>
-        <small v-else-if="tempData.pages=='all'">所有餐點</small>
+        <small>{{ tempData.sort }}</small>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#belusa-nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -23,13 +22,13 @@
       <div class="collapse navbar-collapse" id="belusa-nav">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#" @click.prevent="changePage('hot')">熱門餐點</a>
+            <a class="nav-link" href="#" @click="closeSearch">點餐專區 <small>Order</small></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" @click.prevent="changePage('all')">所有餐點</a>
+            <a class="nav-link" href="#" @click.prevent="openSearch">搜尋商品 <small>Search</small></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://goo.gl/maps/tA9Y2De8X9n">店面位置</a>
+            <a class="nav-link" href="https://goo.gl/maps/tA9Y2De8X9n">店面位置 <small>Address</small></a>
           </li>
         </ul>
         <div class="nav-footer">
@@ -42,12 +41,30 @@
         </div>
       </div>
     </nav>
-    <div :class="{'list':true, 'hot-page':tempData.pages=='hot'}">
+    <div class="list">
       <div class="container">
         <div class="row justify-content-center">
+          <div class="col-12 sort" v-if="!tempData.searchVal">
+            <h4>分類: </h4>
+            <select id="inputState" class="form-control form-control-sm" v-model="tempData.sort">
+              <option selected value="所有餐點">所有餐點</option>
+              <option value="允指回味區">允指回味區</option>
+              <option value="綜合炸物區">綜合炸物區</option>
+              <option value="魚漿製品區">魚漿製品區</option>
+              <option value="鮮脆蔬菜區">鮮脆蔬菜區</option>
+              <option value="美味甜食區">美味甜食區</option>
+            </select>
+          </div>
+          <div class="col-12 mb-4 d-flex justify-content-between align-items-center" v-if="tempData.searchVal">
+            <p class="mb-0">搜尋結果: <b>{{ tempData.searchVal }}</b></p>
+            <span class="badge badge-secondary" @click="closeSearch">
+              <i class="fas fa-times-circle"></i> 關閉搜尋
+            </span>
+          </div>
           <div class="col-md-6 mb-100">
             <div :class="{'con':true, 'hot':item.hot}"
-              v-for="(item, key) in order" :key="key">
+              v-for="(item, key) in order" :key="key" 
+              v-if="(tempData.sort == item.class || tempData.sort == '所有餐點') && item.visible">
               <input type="checkbox" :value="item.name" v-model="item.ordered" :id="'list'+key">
               <label :for="'list'+key">
                 {{ item.name }}
@@ -75,6 +92,7 @@
         <b>總共 {{total}} 元</b>
       </div>
     </div>
+    <!-- Ordered Modal -->
     <div class="modal fade" id="order-list-modal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -135,6 +153,22 @@
         </div>
       </div>
     </div>
+    <!-- Search Modal -->
+    <div class="modal fade" id="SearchModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+              <input type="text" class="form-control" placeholder="搜尋商品名稱"
+              v-model="tempData.searchVal">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <footer>
       <div id="final-list">
         <p v-for="(item, key) in order" v-if="item.ordered">
@@ -155,7 +189,7 @@
   <script src="js/jquery-2.0.0.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/vue.js"></script>
-  <script src="js/data.js?20190222"></script>
+  <script src="js/data.js?20190305"></script>
   <script>
     new Clipboard( "#copy" )
   </script>

@@ -9,6 +9,7 @@ $blue: #50c3de;
 #app{
   padding: 80px 0;
   background-image: url(../img/bg3-1.jpg);
+  min-height: 100vh;
   // background-attachment: local;
   background-size: cover;
   background-position: right bottom;
@@ -52,6 +53,18 @@ $blue: #50c3de;
     }
     
   }
+  .sort{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    h4{
+      flex: 0 0 50px;
+      font-size: 18px;
+      margin-bottom: 0;
+      font-weight: bold;
+      color: 333px;
+    }
+  }
   .ordered{
     padding: 15px;
     max-height: 30vh;
@@ -66,10 +79,20 @@ $blue: #50c3de;
       align-items: center;
     }
   }
-  .hot-page {
-    .con:not(.hot){
-      display: none;
-    }      
+  .hot {
+    position: relative;
+    &::after{
+      position: absolute;
+      content: '熱門';
+      right: 0;
+      border-radius: 3px;
+      right: 7px;
+      top: -6px;
+      font-size: 12px;
+      background: $red;
+      padding: 1px 5px;
+      color: #fff;
+    }    
   }
   footer{
     position: absolute;

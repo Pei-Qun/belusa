@@ -6,6 +6,7 @@
 #app {
   padding: 80px 0;
   background-image: url(../img/bg3-1.jpg);
+  min-height: 100vh;
   background-size: cover;
   background-position: right bottom;
   /* 配色 */
@@ -51,6 +52,26 @@
   }
 }
 
+#app .sort {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 30px;
+}
+
+#app .sort h4 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50px;
+          flex: 0 0 50px;
+  font-size: 18px;
+  margin-bottom: 0;
+  font-weight: bold;
+  color: 333px;
+}
+
 #app .ordered {
   padding: 15px;
   max-height: 30vh;
@@ -73,8 +94,21 @@
           align-items: center;
 }
 
-#app .hot-page .con:not(.hot) {
-  display: none;
+#app .hot {
+  position: relative;
+}
+
+#app .hot::after {
+  position: absolute;
+  content: '熱門';
+  right: 0;
+  border-radius: 3px;
+  right: 7px;
+  top: -6px;
+  font-size: 12px;
+  background: #ff6670;
+  padding: 1px 5px;
+  color: #fff;
 }
 
 #app footer {
