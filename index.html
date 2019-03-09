@@ -15,6 +15,15 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link rel="stylesheet" href="css/all.css?20190304">
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92792255-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-92792255-1');
+  </script>
 </head>
 <body>
   <div id="app">
@@ -55,11 +64,11 @@
             <h4>分類: </h4>
             <select id="inputState" class="form-control form-control-sm" v-model="tempData.sort">
               <option selected value="所有餐點">所有餐點</option>
-              <option value="允指回味區">允指回味區</option>
-              <option value="綜合炸物區">綜合炸物區</option>
-              <option value="魚漿製品區">魚漿製品區</option>
-              <option value="鮮脆蔬菜區">鮮脆蔬菜區</option>
-              <option value="美味甜食區">美味甜食區</option>
+              <option value="夢幻允指回味區">夢幻允指回味區</option>
+              <option value="綜合炸物精選區">綜合炸物精選區</option>
+              <option value="鮮鱻魚漿製品區">鮮鱻魚漿製品區</option>
+              <option value="健康鮮脆蔬菜區">健康鮮脆蔬菜區</option>
+              <option value="心滿意足甜食區">心滿意足甜食區</option>
             </select>
           </div>
           <div class="col-12 mb-4 d-flex justify-content-between align-items-center" v-if="tempData.searchVal">
@@ -196,7 +205,7 @@
   <script src="js/jquery-2.0.0.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/vue.js"></script>
-  <script src="js/data.js?20190304"></script>
+  <script src="js/data.js?20190309"></script>
   <script>
     new Clipboard( "#copy" )
   </script>
