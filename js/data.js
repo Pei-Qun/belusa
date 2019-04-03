@@ -198,15 +198,6 @@ new Vue({
         cash: 30,
         visible: true,
       },{
-        name: '地瓜(甘梅粉)',
-        ordered: false,
-        num: 1,
-        imgUrl: 'img/good.jpg',
-        class: '綜合炸物精選區',
-        hot: true,
-        cash: 50,
-        visible: true,
-      },{
         name: '地瓜(甘梅粉 小份)',
         ordered: false,
         num: 1,
@@ -214,6 +205,15 @@ new Vue({
         class: '綜合炸物精選區',
         hot: false,
         cash: 30,
+        visible: true,
+      },{
+        name: '地瓜(甘梅粉 大份)',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '綜合炸物精選區',
+        hot: true,
+        cash: 50,
         visible: true,
       },{
         name: '小熱狗(2條)',
@@ -502,6 +502,15 @@ new Vue({
         class: '綜合炸物精選區',
         hot: true,
         cash: 50,
+        visible: true,
+      },{
+        name: '雞蛋豆腐(半盒)',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '綜合炸物精選區',
+        hot: false,
+	      cash: 30,
         visible: true,
       },{
         name: '淋醬調皮搗蛋',
@@ -837,15 +846,6 @@ new Vue({
         cash: 35,
         visible: true,
       },{
-        name: '銀絲卷披起司(煉乳/黑糖蜜)',
-        ordered: false,
-        num: 1,
-        imgUrl: 'img/good.jpg',
-        class: '心滿意足甜食區',
-        hot: true,
-        cash: 40,
-        visible: true,
-      },{
         name: '玉米布丁酥(4個)',
         ordered: false,
         num: 1,
@@ -853,6 +853,15 @@ new Vue({
         class: '心滿意足甜食區',
         hot: false,
         cash: 35,
+        visible: true,
+      },{
+        name: '銀絲卷披起司(煉乳/黑糖蜜)',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '心滿意足甜食區',
+        hot: true,
+        cash: 40,
         visible: true,
       },{
         name: '黑糖蜜地瓜',
@@ -871,15 +880,6 @@ new Vue({
         class: '心滿意足甜食區',
         hot: false,
 	      cash: 45,
-        visible: true,
-      },{
-        name: '雞蛋豆腐半盒',
-        ordered: false,
-        num: 1,
-        imgUrl: 'img/good.jpg',
-        class: '心滿意足甜食區',
-        hot: false,
-	      cash: 30,
         visible: true,
       }
    ]
