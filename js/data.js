@@ -9,15 +9,43 @@ new Vue({
     },
     sauce: [
       {
+        name: '原味',
+        ordered: false,
+      },
+      {
         name: '胡椒粉',
         ordered: false,
       },
       {
-        name: '辣椒粉',
+        name: '青梅子粉',
+        ordered: false,
+      },
+      {
+        name: '咖哩粉',
+        ordered: false,
+      },
+      {
+        name: '大辣',
+        ordered: false,
+      },
+      {
+        name: '中辣',
+        ordered: false,
+      },
+      {
+        name: '小辣',
+        ordered: false,
+      },
+      {
+        name: '微辣',
         ordered: false,
       },
       {
         name: '甘梅粉',
+        ordered: false,
+      },
+      {
+        name: '雞排(切)',
         ordered: false,
       },
       {
@@ -413,7 +441,7 @@ new Vue({
         cash: 30,
         visible: true,
       },{
-        name: '蜜糖小熱狗',
+        name: '蜜糖小肉豆',
         ordered: false,
         num: 1,
         imgUrl: 'img/good.jpg',
@@ -440,7 +468,7 @@ new Vue({
         cash: 35,
         visible: true,
       },{
-        name: '佐拉起司條(3條)',
+        name: '摩佐拉起司條(3條)',
         ordered: false,
         num: 1,
         imgUrl: 'img/good.jpg',
@@ -620,15 +648,6 @@ new Vue({
         cash: 20,
         visible: true,
       },{
-        name: '金針菇',
-        ordered: false,
-        num: 1,
-        imgUrl: 'img/good.jpg',
-        class: '健康鮮脆蔬菜區',
-        hot: false,
-        cash: 35,
-        visible: true,
-      },{
         name: '小黃瓜',
         ordered: false,
         num: 1,
@@ -719,13 +738,13 @@ new Vue({
         cash: 35,
         visible: true,
       },{
-        name: '地瓜(黑糖蜜)',
+        name: '金針菇',
         ordered: false,
         num: 1,
         imgUrl: 'img/good.jpg',
-        class: '心滿意足甜食區',
+        class: '健康鮮脆蔬菜區',
         hot: false,
-        cash: 40,
+        cash: 35,
         visible: true,
       },{
         name: '紫心地瓜麻糬球(3顆)',
@@ -836,6 +855,15 @@ new Vue({
         cash: 35,
         visible: true,
       },{
+        name: '黑糖蜜地瓜',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '心滿意足甜食區',
+        hot: false,
+        cash: 40,
+        visible: true,
+      },{
         name: '炸香醇巧克力布朗尼(3個)',
         ordered: false,
         num: 1,
@@ -843,6 +871,15 @@ new Vue({
         class: '心滿意足甜食區',
         hot: false,
 	      cash: 45,
+        visible: true,
+      },{
+        name: '雞蛋豆腐半盒',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '心滿意足甜食區',
+        hot: false,
+	      cash: 30,
         visible: true,
       }
    ]
