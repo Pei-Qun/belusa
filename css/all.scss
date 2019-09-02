@@ -13,159 +13,161 @@ $blue: #50c3de;
   // background-attachment: local;
   background-size: cover;
   background-position: right bottom;
-  /* 配色 */
-  .btn-red{
+}
+/* 配色 */
+.btn-red{
+  background-color: $red;
+  color: #fff;
+}
+.btn-yellow{
+  background-color: $yellow;
+}
+.thead-pink{
+  background-color: $pink;
+  color: #fff;
+}
+/* 選單 */
+.navbar{
+  @media (max-width: 992px){
     background-color: $red;
-    color: #fff;
-  }
-  .btn-yellow{
-    background-color: $yellow;
-  }
-  .thead-pink{
-    background-color: $pink;
-    color: #fff;
-  }
-  /* 選單 */
-  .navbar{
-    @media (max-width: 992px){
-      background-color: $red;
-      padding: 0;
-      #belusa-nav{
-        background-color: #f6f6f6;
-        padding: 0 15px;
-      }
-      .navbar-brand{
-        color: #fff;
-        margin: .5rem 1rem;
-      }
-      .navbar-toggler{
-        background-color: $light-yellow;
-        margin: .5rem 1rem;
-      }
-      .nav-item{
-        .nav-link{
-          color: #333;
-        }
-      }
-      .nav-footer{
-        margin-bottom: 5px;
-      }
+    padding: 0;
+    #belusa-nav{
+      background-color: #f6f6f6;
+      padding: 0 15px;
     }
-    
-  }
-  .sort{
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-    h4{
-      flex: 0 0 50px;
-      font-size: 18px;
-      margin-bottom: 0;
-      font-weight: bold;
-      color: 333px;
-    }
-  }
-  .ordered{
-    padding: 15px;
-    max-height: 30vh;
-    background-color: $light-yellow;
-    border-top: 5px solid $pink;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    .area{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-  .hot {
-    position: relative;
-    &::after{
-      position: absolute;
-      content: '熱門';
-      right: 0;
-      border-radius: 3px;
-      right: 7px;
-      top: -6px;
-      font-size: 12px;
-      background: $red;
-      padding: 1px 5px;
+    .navbar-brand{
       color: #fff;
-    }    
-  }
-  footer{
-    position: absolute;
-    top: 100%;
-    opacity: 0;
-    z-index: -1;
-  }
-  .list{
-    .mb-100{
-      margin-bottom: 100px;
+      margin: .5rem 1rem;
     }
-    .con{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 10px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-      border: 2px solid #ddd;
-      
-      // background-image: url(../img/bg3-1.jpg);
-      // background-attachment: local;
-      background-color: rgba(255,255,255,0.5);
-      background-size: cover;
-      background-position: right bottom;
-      input[type="checkbox"] {
-        width: 30px;
-        height: 30px;
-        background-color: #fff;
-        flex: 0 0 30px;
-      }
-      label {
-        margin-bottom: 0;
-        flex: 1;
-        text-align: center;
-      }
-      .num-edit{
-        flex: 0 0 100px;
-        text-align: right;
+    .navbar-toggler{
+      background-color: $light-yellow;
+      margin: .5rem 1rem;
+    }
+    .nav-item{
+      .nav-link{
         color: #333;
-        .btn-light{
-          box-shadow: 1px 1px 6px #aaa;
-          box-sizing: border-box;
-        }
-        .disable{
-          color: #aaa;
-        }
-        span{
-          width: 45px;
-          display: inline-block;
-          width: 20px;
-          text-align: center;
-          color: #333;
-        }
       }
     }
-  }
-  .sauce{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    .sau-btn{
-      padding: 5px 10px;
-      border: 1px solid #999;
-      border-radius: 3px;
-      margin-right: 5px;
-      &.select{
-        border: 2px solid $yellow;
-      }
-      input{
-        display: none;
-      }
+    .nav-footer{
+      margin-bottom: 5px;
     }
   }
   
+}
+.sort{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  h4{
+    flex: 0 0 50px;
+    font-size: 18px;
+    margin-bottom: 0;
+    font-weight: bold;
+    color: 333px;
+  }
+}
+.ordered{
+  padding: 15px;
+  max-height: 30vh;
+  background-color: $light-yellow;
+  border-top: 5px solid $pink;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  .area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.hot {
+  position: relative;
+  &::after{
+    position: absolute;
+    content: '熱門';
+    right: 0;
+    border-radius: 3px;
+    right: 7px;
+    top: -6px;
+    font-size: 12px;
+    background: $red;
+    padding: 1px 5px;
+    color: #fff;
+  }    
+}
+footer{
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  z-index: -1;
+}
+.list{
+  .mb-100{
+    margin-bottom: 100px;
+  }
+  .con{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    
+    // background-image: url(../img/bg3-1.jpg);
+    // background-attachment: local;
+    background-color: rgba(255,255,255,0.5);
+    background-size: cover;
+    background-position: right bottom;
+    input[type="checkbox"] {
+      width: 30px;
+      height: 30px;
+      background-color: #fff;
+      flex: 0 0 30px;
+    }
+    label {
+      margin-bottom: 0;
+      flex: 1;
+      text-align: center;
+    }
+    .num-edit{
+      flex: 0 0 100px;
+      text-align: right;
+      color: #333;
+      .btn-light{
+        box-shadow: 1px 1px 6px #aaa;
+        box-sizing: border-box;
+      }
+      .disable{
+        color: #aaa;
+      }
+      span{
+        width: 45px;
+        display: inline-block;
+        width: 20px;
+        text-align: center;
+        color: #333;
+      }
+    }
+  }
+}
+.sauce{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  .sau-btn{
+    padding: 5px 10px;
+    border: 1px solid #999;
+    border-radius: 3px;
+    margin-right: 5px;
+    &.select{
+      border: 2px solid $yellow;
+    }
+    input{
+      display: none;
+    }
+  }
+}
+.elseBtn{
+  flex: 1 1 100%;
 }

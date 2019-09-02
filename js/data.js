@@ -7,9 +7,22 @@ new Vue({
       sort: '所有餐點',
       searchVal: '',
     },
+    elseBtn:{
+      potato:{
+        name: '地瓜薯條(梅子粉)',
+        show: false,
+        ordered: false,
+      },
+      chicken:{
+        name: 'G排/腿仁排(切)',
+        show: false,
+        ordered: false,
+      },
+    },
+    spicy: '辣粉另包',
     sauce: [
       {
-        name: '原味',
+        name: '不灑粉',
         ordered: false,
       },
       {
@@ -25,39 +38,15 @@ new Vue({
         ordered: false,
       },
       {
-        name: '大辣',
-        ordered: false,
-      },
-      {
-        name: '中辣',
-        ordered: false,
-      },
-      {
-        name: '小辣',
-        ordered: false,
-      },
-      {
-        name: '微辣',
-        ordered: false,
-      },
-      {
         name: '九層塔',
         ordered: false,
       },
       {
-        name: '洋蔥',
+        name: '生洋蔥',
         ordered: false,
       },
       {
-        name: '蒜頭',
-        ordered: false,
-      },
-      {
-        name: 'G排/腿仁排(切)',
-        ordered: false,
-      },
-      {
-        name: '地瓜薯條(梅子粉)',
+        name: '生蒜片',
         ordered: false,
       },
     ],
@@ -81,14 +70,14 @@ new Vue({
         cash: 40,
         visible: true,
       },{
-        name: '雙飛雞翅',
+        name: '雙飛雞翅(2隻)',
         ordered: false,
         num: 1,
         imgUrl: 'img/good.jpg',
         class: '夢幻吮指回味區',
         hot: true,
-      cash: 35,
-      visible: true,
+        cash: 35,
+        visible: true,
       },{
         name: '雞腿仁排',
         ordered: false,
@@ -96,8 +85,9 @@ new Vue({
         imgUrl: 'img/good.jpg',
         class: '夢幻吮指回味區',
         hot: true,
-      cash: 45,
-      visible: true,
+        cash: 45,
+        visible: true,
+        sauceAdd: 'chicken'
       },{
         name: '貝稑莎香雞排',
         ordered: false,
@@ -105,8 +95,9 @@ new Vue({
         imgUrl: 'img/good.jpg',
         class: '夢幻吮指回味區',
         hot: true,
-      cash: 60,
-      visible: true,
+        cash: 60,
+        visible: true,
+        sauceAdd: 'chicken'
       },{
         name: '脫光光香雞排',
         ordered: false,
@@ -114,8 +105,9 @@ new Vue({
         imgUrl: 'img/good.jpg',
         class: '夢幻吮指回味區',
         hot: true,
-      cash: 60,
-      visible: true,
+        cash: 60,
+        visible: true,
+        sauceAdd: 'chicken'
       },{
         name: '打啵起司香雞排',
         ordered: false,
@@ -123,8 +115,9 @@ new Vue({
         imgUrl: 'img/good.jpg',
         class: '夢幻吮指回味區',
         hot: true,
-      cash: 75,
-      visible: true,
+        cash: 75,
+        visible: true,
+        sauceAdd: 'chicken'
       },{
         name: '無骨鹽酥雞(大份)',
         ordered: false,
@@ -132,8 +125,8 @@ new Vue({
         imgUrl: 'img/good.jpg',
         class: '綜合炸物精選區',
         hot: true,
-      cash: 60,
-      visible: true,
+        cash: 60,
+        visible: true,
       },{
         name: '無骨鹽酥雞(小份)',
         ordered: false,
@@ -206,6 +199,7 @@ new Vue({
         hot: true,
         cash: 50,
         visible: true,
+        sauceAdd: 'potato'
       },{
         name: '地瓜薯條(小份)',
         ordered: false,
@@ -215,24 +209,7 @@ new Vue({
         hot: false,
         cash: 30,
         visible: true,
-      },{
-        name: '讚岐烏龍棒棒',
-        ordered: false,
-        num: 1,
-        imgUrl: 'img/good.jpg',
-        class: '綜合炸物精選區',
-        hot: false,
-        cash: 25,
-        visible: true,
-      },{
-        name: '香蔥鮮肉餡餅(2個)',
-        ordered: false,
-        num: 1,
-        imgUrl: 'img/good.jpg',
-        class: '綜合炸物精選區',
-        hot: false,
-        cash: 25,
-        visible: true,
+        sauceAdd: 'potato'
       },{
         name: '小熱狗(2條)',
         ordered: false,
@@ -414,6 +391,15 @@ new Vue({
         cash: 20,
         visible: true,
       },{
+        name: '骨膠原鳳爪(2隻)',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '綜合炸物精選區',
+        hot: true,
+        cash: 20,
+        visible: true,
+      },{
         name: '雞尾椎',
         ordered: false,
         num: 1,
@@ -424,6 +410,24 @@ new Vue({
         visible: true,
       },{
         name: '德國香腸',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '綜合炸物精選區',
+        hot: false,
+        cash: 25,
+        visible: true,
+      },{
+        name: '讚岐烏龍棒棒',
+        ordered: false,
+        num: 1,
+        imgUrl: 'img/good.jpg',
+        class: '綜合炸物精選區',
+        hot: false,
+        cash: 25,
+        visible: true,
+      },{
+        name: '香蔥鮮肉餡餅(2個)',
         ordered: false,
         num: 1,
         imgUrl: 'img/good.jpg',
@@ -792,15 +796,6 @@ new Vue({
         cash: 20,
         visible: true,
       },{
-        name: '飄香甜綠豆沙球(2顆)',
-        ordered: false,
-        num: 1,
-        imgUrl: 'img/good.jpg',
-        class: '心滿意足甜食區',
-        hot: false,
-        cash: 20,
-        visible: true,
-      },{
         name: '脆皮甜黑米糕捲(2個)',
         ordered: false,
         num: 1,
@@ -981,6 +976,18 @@ new Vue({
     }
   },
   methods: {
+    showAdd(item){
+      const vm = this;
+      if(item.sauceAdd) {
+        let val = item.sauceAdd;
+        if(item.ordered){
+          vm.elseBtn[val].show = true;
+        } else {
+          vm.elseBtn[val].show = false;
+        }
+        console.log(vm.elseBtn, item.ordered)
+      }
+    },
     numPlus(key){
       const vm = this;
       vm.order[key].num += 1;
@@ -1004,10 +1011,19 @@ new Vue({
         // $('#order-list-modal').modal('hide')
       }
     },
+    sauceSelect() {
+      let ok = 0;
+      this.sauce.forEach(el => {
+        if(el.ordered){
+          ok += 1;
+        }
+      });
+      return ok;
+    },
     sendMsg(){
       const vm = this;
       const ext = $('.sauce-exit').html();
-      if( ext == "<!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!---->" ){
+      if( !vm.sauceSelect() ){
         alert('尚未選取配料')
       } else {
         setTimeout(function(){

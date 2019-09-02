@@ -13,7 +13,7 @@
   
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/all.css?20190304">
+  <link rel="stylesheet" href="css/all.css?20190902">
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92792255-1"></script>
@@ -29,7 +29,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
       <a class="navbar-brand" href="#">
-        貝稑莎 - 
+        <h1 class="h4 d-inline">貝稑莎</h1><span> - </span>
         <small>{{ tempData.sort }}</small>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#belusa-nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,6 +70,9 @@
               <option value="健康鮮脆蔬菜區">健康鮮脆蔬菜區</option>
               <option value="心滿意足甜食區">心滿意足甜食區</option>
             </select>
+            <button class="ml-2 btn btn-sm btn-yellow" @click.prevent="openSearch">
+              搜尋商品
+            </button>
           </div>
           <div class="col-12 mb-4 d-flex justify-content-between align-items-center" v-if="tempData.searchVal">
             <p class="mb-0">搜尋結果: <b>{{ tempData.searchVal }}</b></p>
@@ -79,9 +82,10 @@
           </div>
           <div class="col-md-6 mb-100">
             <div :class="{'con':true, 'hot':item.hot}"
-              v-for="(item, key) in order" :key="key" 
+              v-for="(item, key) in order" :key="key"
               v-if="(tempData.sort == item.class || tempData.sort == '所有餐點') && item.visible">
-              <input type="checkbox" :value="item.name" v-model="item.ordered" :id="'list'+key">
+              <input type="checkbox" :value="item.name" v-model="item.ordered"
+                :id="'list'+key" @change="showAdd(item)">
               <label :for="'list'+key">
                 {{ item.name }}
               </label>
@@ -141,7 +145,26 @@
                 <tr>
                   <td colspan="3">
                     <div class="sauce">
-                      <label v-for="(item, key) in sauce" :for="'sauce'+key" v-if="!tempData.nosauce" 
+                      <label for="spicy" class="input-group">
+                        <select id="spicy" v-model="spicy" class="custom-select">
+                          <option value="辣粉另包">辣粉另包</option>
+                          <option value="大辣">大辣</option>
+                          <option value="中辣">中辣</option>
+                          <option value="小辣">小辣</option>
+                          <option value="微辣">微辣</option>
+                          <option value="不要辣">不要辣</option>
+                        </select>
+                      </label>
+                      <div class="elseBtn">
+                        <label v-for="(item, key) in elseBtn" :for="'else'+key"
+                        v-if="item.show" 
+                        :key="key" :class="{'select':item.ordered,'sau-btn':true}">
+                        <input type="checkbox" v-model="item.ordered" :id="'else'+key">
+                        {{ item.name }}
+                        </label>
+                      </div>
+                      <label v-for="(item, key) in sauce" :for="'sauce'+key"
+                        v-if="!tempData.nosauce" 
                         :key="key" :class="{'select':item.ordered,'sau-btn':true}">
                         <input type="checkbox" v-model="item.ordered" :id="'sauce'+key">
                         {{ item.name }}
@@ -192,9 +215,12 @@
         </p>
         <br>配料:
         <p class="sauce-exit" v-if="!tempData.nosauce">
-          <span v-for="(item, key) in sauce" v-if="item.ordered">{{ item.name }}、</span>
+          <span v-for="(item, key) in sauce" v-if="item.ordered">{{ item.name }}、</span>{{spicy}}
         </p>
         <p v-if="tempData.nosauce">不要任何配料</p>
+        <p class="mb-3">
+          備註: <span v-for="(item, key) in elseBtn" :key="key" v-if="item.ordered">{{item.name}}</span><br>
+        </p>
         <p>
           總計 {{total}} 元
         </p>
@@ -205,7 +231,7 @@
   <script src="js/jquery-2.0.0.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/vue.js"></script>
-  <script src="js/data.js?201906071"></script>
+  <script src="js/data.js?20190902"></script>
   <script>
     new Clipboard( "#copy" )
   </script>

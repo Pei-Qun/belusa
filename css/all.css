@@ -9,50 +9,50 @@
   min-height: 110vh;
   background-size: cover;
   background-position: right bottom;
-  /* 配色 */
-  /* 選單 */
 }
 
-#app .btn-red {
+/* 配色 */
+.btn-red {
   background-color: #ff6670;
   color: #fff;
 }
 
-#app .btn-yellow {
+.btn-yellow {
   background-color: #ffe26d;
 }
 
-#app .thead-pink {
+.thead-pink {
   background-color: #fe878f;
   color: #fff;
 }
 
+/* 選單 */
 @media (max-width: 992px) {
-  #app .navbar {
+  .navbar {
     background-color: #ff6670;
     padding: 0;
   }
-  #app .navbar #belusa-nav {
+  .navbar #belusa-nav {
     background-color: #f6f6f6;
     padding: 0 15px;
   }
-  #app .navbar .navbar-brand {
+  .navbar .navbar-brand {
     color: #fff;
     margin: .5rem 1rem;
   }
-  #app .navbar .navbar-toggler {
+  .navbar .navbar-toggler {
     background-color: #fcf3d7;
     margin: .5rem 1rem;
   }
-  #app .navbar .nav-item .nav-link {
+  .navbar .nav-item .nav-link {
     color: #333;
   }
-  #app .navbar .nav-footer {
+  .navbar .nav-footer {
     margin-bottom: 5px;
   }
 }
 
-#app .sort {
+.sort {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -62,7 +62,7 @@
   margin-bottom: 30px;
 }
 
-#app .sort h4 {
+.sort h4 {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 50px;
           flex: 0 0 50px;
@@ -72,7 +72,7 @@
   color: 333px;
 }
 
-#app .ordered {
+.ordered {
   padding: 15px;
   max-height: 30vh;
   background-color: #fcf3d7;
@@ -82,7 +82,7 @@
   width: 100%;
 }
 
-#app .ordered .area {
+.ordered .area {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -94,11 +94,11 @@
           align-items: center;
 }
 
-#app .hot {
+.hot {
   position: relative;
 }
 
-#app .hot::after {
+.hot::after {
   position: absolute;
   content: '熱門';
   right: 0;
@@ -111,18 +111,18 @@
   color: #fff;
 }
 
-#app footer {
+footer {
   position: absolute;
   top: 100%;
   opacity: 0;
   z-index: -1;
 }
 
-#app .list .mb-100 {
+.list .mb-100 {
   margin-bottom: 100px;
 }
 
-#app .list .con {
+.list .con {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -141,7 +141,7 @@
   background-position: right bottom;
 }
 
-#app .list .con input[type="checkbox"] {
+.list .con input[type="checkbox"] {
   width: 30px;
   height: 30px;
   background-color: #fff;
@@ -150,7 +150,7 @@
           flex: 0 0 30px;
 }
 
-#app .list .con label {
+.list .con label {
   margin-bottom: 0;
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -158,7 +158,7 @@
   text-align: center;
 }
 
-#app .list .con .num-edit {
+.list .con .num-edit {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 100px;
           flex: 0 0 100px;
@@ -166,18 +166,18 @@
   color: #333;
 }
 
-#app .list .con .num-edit .btn-light {
+.list .con .num-edit .btn-light {
   -webkit-box-shadow: 1px 1px 6px #aaa;
           box-shadow: 1px 1px 6px #aaa;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-#app .list .con .num-edit .disable {
+.list .con .num-edit .disable {
   color: #aaa;
 }
 
-#app .list .con .num-edit span {
+.list .con .num-edit span {
   width: 45px;
   display: inline-block;
   width: 20px;
@@ -185,7 +185,7 @@
   color: #333;
 }
 
-#app .sauce {
+.sauce {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -196,18 +196,24 @@
           align-items: flex-end;
 }
 
-#app .sauce .sau-btn {
+.sauce .sau-btn {
   padding: 5px 10px;
   border: 1px solid #999;
   border-radius: 3px;
   margin-right: 5px;
 }
 
-#app .sauce .sau-btn.select {
+.sauce .sau-btn.select {
   border: 2px solid #ffe26d;
 }
 
-#app .sauce .sau-btn input {
+.sauce .sau-btn input {
   display: none;
+}
+
+.elseBtn {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
 }
 /*# sourceMappingURL=all.css.map */
