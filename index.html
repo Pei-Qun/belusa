@@ -8,6 +8,8 @@
   <meta name="description" content="貝稑莎鹽酥雞點餐系統" />
   <meta name="copyright" CONTENT="本網頁著作權貝稑莎所有">
   <meta name="URL" content="https://pei-qun.github.io/belusa/">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ff6670">
 
   <title>貝稑莎點餐平台</title>
   
@@ -37,6 +39,9 @@
       </button>
       <div class="collapse navbar-collapse" id="belusa-nav">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="https://youtu.be/7Trm9-FE5pc" target="_blank">使用教學 <small>Teach</small></a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#" @click="closeSearch">點餐專區 <small>Order</small></a>
           </li>
@@ -234,6 +239,15 @@
   <script src="js/data.js?20190902"></script>
   <script>
     new Clipboard( "#copy" )
+  </script>
+  <script>
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').then(function(reg){
+        console.log('yes');
+      }).catch(function(err){
+        console.log('no', err);
+      })
+    }
   </script>
 </body>
 </html>
