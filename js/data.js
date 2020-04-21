@@ -19,7 +19,7 @@ new Vue({
         ordered: false,
       },
     },
-    spicy: '辣粉另包',
+    spicy: '不要辣',
     sauce: [
       {
         name: '不灑粉',
