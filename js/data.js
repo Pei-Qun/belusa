@@ -977,15 +977,6 @@ new Vue({
         cash: 40,
         visible: true,
       },{
-        name: '炸香醇巧克力布朗尼(3個)',
-        ordered: false,
-        num: 1,
-        imgUrl: 'img/good.jpg',
-        class: '心滿意足甜食區',
-        hot: false,
-	      cash: 45,
-        visible: true,
-      },{
         name: '炸滑順香草泡芙球(4顆)',
         ordered: false,
         num: 1,
