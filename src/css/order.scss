@@ -1,0 +1,15 @@
+.wrap{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.order{
+  width: 600px;
+  max-width: 100%;
+  .main{
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

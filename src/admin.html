@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="貝稑莎,鹹酥雞,高雄鹹酥雞,推薦鹹酥雞,鹽酥雞,炸物" />
+    <meta name="description" content="貝稑莎鹽酥雞點餐系統" />
+    <meta name="copyright" CONTENT="本網頁著作權貝稑莎所有">
+    <meta name="URL" content="https://pei-qun.github.io/belusa/">
+    <meta name="theme-color" content="#ff6670">
+  
+    <title>貝稑莎點餐平台</title>
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/all.css?20200108">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  </head>
+<body>
+  
+  <div id="app">
+    <div class="container">
+      <form @submit.prevent="login" v-if="!status.login">
+        <input type="text" placeholder="Email" v-model="formData.email">
+        <input type="password" name="password" id="password" v-model="formData.password">
+        <button class="btn">送出</button>
+      </form>
+      <section v-else>
+        <div v-if="orderData">
+          <article v-for="(item, index) in orderData">
+            <h3>
+              {{ index }}
+            </h3>
+            <label>
+              <!-- <input type="radio"
+                :name="`item${index + 1}`"
+                :value="true"
+                v-model="orderData[index].cardSend"
+              > -->
+              <button class="btn btn-success"
+                v-if="!orderData[index].cardSend"
+                @click="cardSendClick(index, true)"
+              >
+                發送卡牌
+              </button>
+              <button class="btn btn-secondary"
+                v-else
+                :disabled="!orderData[index].foodDone && orderData[index].cardSend || orderData[index].foodDone && orderData[index].cardSend"
+              >
+                已發送
+              </button>
+            </label>
+            <label>
+              <!-- <input type="radio"
+                :name="`item${index + 1}`"
+                :value="true"
+                @click="foodDoneClick(index + 1, item)"
+                v-model="orderData[index].foodDone"
+              > -->
+              <button class="btn btn-success"
+                v-if="!orderData[index].foodDone"
+                :disabled="!orderData[index].cardSend"
+                @click="foodDoneClick(index, true)"
+              >
+                可取餐
+              </button>
+              <button class="btn btn-secondary"
+                v-else
+                :disabled="orderData[index].cardSend && orderData[index].foodDone"
+              >
+                未取餐
+              </button>
+            </label>
+            <label>
+              <button class="btn btn-success"
+                v-if="orderData[index].foodDone"
+                @click="allDoneClick(index)"
+              >
+                已取餐
+              </button>
+            </label>
+          </article>
+        </div>
+        <button class="btn" @click="logout">登出</button>
+      </section>
+    </div>
+  </div>
+
+  <script src="js/jquery-2.0.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/vue.js"></script>
+
+  <!-- The core Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script> -->
+  <script src="js/order.js"></script>
+</body>
+</html>
