@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="keywords" content="貝稑莎,鹹酥雞,高雄鹹酥雞,推薦鹹酥雞,鹽酥雞,炸物" />
+  <meta name="description" content="貝稑莎鹽酥雞點餐系統" />
+  <meta name="copyright" CONTENT="本網頁著作權貝稑莎所有">
+  <meta name="URL" content="https://belusa.web.app/">
+  <link rel="manifest" href="manifest.json?20190915">
+  <meta name="theme-color" content="#ff6670">
+
+  <title>貝稑莎點餐平台</title>
+  
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/all.css?20200108">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92792255-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-92792255-1');
+  </script>
+</head>
+<body>
+  <div id="app">
+    <marquee style="margin-top: -20px; background-color: rgba(255,255,255, .5); padding: 10px; margin-bottom: 5px;">
+      因跨年人潮較多，本 <mark>點餐 app</mark> 在 12/31 <b class="text-danger">當日</b>改為 <mark>後位 app</mark>，預祝各位新年快樂
+    </marquee>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <a class="navbar-brand" href="#">
+        <h1 class="h4 d-inline">貝稑莎</h1><span> - </span>
+        <small>{{ tempData.sort }}</small>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#belusa-nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="belusa-nav">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="https://youtu.be/7Trm9-FE5pc" target="_blank">使用教學 <small>Teach</small></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" @click="closeSearch">點餐專區 <small>Order</small></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" @click.prevent="openSearch">搜尋商品 <small>Search</small></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://goo.gl/maps/tA9Y2De8X9n">店面位置 <small>Address</small></a>
+          </li>
+        </ul>
+        <div class="nav-footer">
+          <a href="https://www.facebook.com/%E8%B2%9D%E7%A8%91%E8%8E%8E%E9%B9%BD%E9%85%A5%E9%9B%9E-170776109780301/" class="btn btn-outline-info my-2 my-sm-0">
+            <i class="fab fa-facebook-square"></i> 貝稑莎粉專
+          </a>
+          <a href="https://line.me/ti/p/KUQIYFYj8l" class="btn btn-outline-success my-2 my-sm-0">
+            <i class="fab fa-line"></i> 貝稑莎 line
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="list">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 sort" v-if="!tempData.searchVal">
+            <h4>分類: </h4>
+            <select id="inputState" class="form-control form-control-sm" v-model="tempData.sort">
+              <option selected value="所有餐點">所有餐點</option>
+              <option value="夢幻吮指回味區">夢幻吮指回味區</option>
+              <option value="綜合炸物精選區">綜合炸物精選區</option>
+              <option value="鮮鱻魚漿製品區">鮮鱻魚漿製品區</option>
+              <option value="健康鮮脆蔬菜區">健康鮮脆蔬菜區</option>
+              <option value="心滿意足甜食區">心滿意足甜食區</option>
+            </select>
+            <button class="ml-2 btn btn-sm btn-yellow" @click.prevent="openSearch">
+              搜尋商品
+            </button>
+          </div>
+          <div class="col-12 mb-4 d-flex justify-content-between align-items-center" v-if="tempData.searchVal">
+            <p class="mb-0">搜尋結果: <b>{{ tempData.searchVal }}</b></p>
+            <span class="badge badge-secondary" @click="closeSearch">
+              <i class="fas fa-times-circle"></i> 關閉搜尋
+            </span>
+          </div>
+          <div class="col-md-6 mb-100">
+            <div :class="{'con':true, 'hot':item.hot}"
+              v-for="(item, key) in order" :key="key"
+              v-if="(tempData.sort == item.class || tempData.sort == '所有餐點') && item.visible">
+              <input type="checkbox" :value="item.name" v-model="item.ordered"
+                :id="'list'+key" @change="showAdd(item)">
+              <label :for="'list'+key">
+                {{ item.name }}
+              </label>
+              <div class="num-edit" v-if="item.ordered">
+                <button class="btn btn-yellow btn-sm" :class="{'disabled': item.num==1}" >
+                  <i class="fas fa-minus"  @click="minusPlus(key)"></i>
+                </button>
+                <span>{{ item.num }}</span>
+                <button class="btn btn-yellow btn-sm">
+                  <i class="fas fa-plus" @click="numPlus(key)"></i>
+                </button>                
+              </div>
+              <div class="num-edit" v-else><b>{{ item.cash }} 元</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ordered">
+      <div class="area">
+        <button type="button" class="btn btn-red" data-toggle="modal" data-target="#order-list-modal">
+          查看餐點
+        </button>
+        <b>總共 {{total}} 元</b>
+      </div>
+    </div>
+    <!-- Ordered Modal -->
+    <div class="modal fade" id="order-list-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">已選餐點清單</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-striped table-sm" v-if="total">
+              <thead class="thead-pink">
+                <tr>
+                  <th>餐點</th>
+                  <th>數量</th>
+                  <th>小計</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(item, key) in order" v-if="item.ordered">
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.num }}</td>
+                  <td>{{ item.num*item.cash }}元</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr class="thead-pink">
+                  <td colspan="3">請選擇配料</td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <div class="sauce">
+                      <label for="spicy" class="input-group">
+                        <select id="spicy" v-model="spicy" class="custom-select">
+                          <option value="不要辣">不要辣</option>
+                          <option value="微辣">微辣</option>
+                          <option value="小辣">小辣</option>
+                          <option value="中辣">中辣</option>
+                          <option value="大辣">大辣</option>
+                          <option value="辣粉另包">辣粉另包</option>
+                        </select>
+                      </label>
+                      <div class="elseBtn">
+                        <label v-for="(item, key) in elseBtn" :for="'else'+key"
+                        v-if="item.show" 
+                        :key="key" :class="{'select':item.ordered,'sau-btn':true}">
+                        <input type="checkbox" v-model="item.ordered" :id="'else'+key">
+                        {{ item.name }}
+                        </label>
+                      </div>
+                      <label v-for="(item, key) in sauce" :for="'sauce'+key"
+                        v-if="!tempData.nosauce" 
+                        :key="key" :class="{'select':item.ordered,'sau-btn':true}">
+                        <input type="checkbox" v-model="item.ordered" :id="'sauce'+key">
+                        {{ item.name }}
+                      </label>
+                      <label for="n-sauce" class="n-sauce">
+                        <input type="checkbox" id="n-sauce" v-model="tempData.nosauce">
+                        不要任何配料
+                      </label>
+                    </div>
+                  </td>
+                </tr>
+              </tfoot>     
+            </table>
+            <p v-else>尚未點餐</p>
+            <p class="text-danger">總共 {{total}} 元</p>
+            
+          </div>
+          <div class="modal-footer justify-content-between" v-if="total">
+            <button type="button" class="btn btn-secondary" @click="reset">重新選取</button>
+            <button type="button" class="btn btn-yellow" id="copy" 
+              data-clipboard-target="#final-list" @click="sendMsg">
+              複製並送出
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Search Modal -->
+    <div class="modal fade" id="SearchModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+              <input type="text" class="form-control" placeholder="搜尋商品名稱"
+              v-model="tempData.searchVal" @keyup.enter="closeSearchModal">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div id="final-list">
+        <p v-for="(item, key) in order" v-if="item.ordered">
+          {{ item.name }}　x　{{ item.num }} 份
+        </p>
+        <br>配料:
+        <p class="sauce-exit" v-if="!tempData.nosauce">
+          <span v-for="(item, key) in sauce" v-if="item.ordered">{{ item.name }}、</span>{{spicy}}
+        </p>
+        <p v-if="tempData.nosauce">不要任何配料</p>
+        <p class="mb-3">
+          備註: <span v-for="(item, key) in elseBtn" :key="key" v-if="item.ordered">{{item.name}}</span><br>
+        </p>
+        <p>
+          總計 {{total}} 元
+        </p>
+      </div>
+    </footer>
+  </div>
+  <script src="js/clipboard.min.js"></script>
+  <script src="js/jquery-2.0.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/vue.js"></script>
+  <script src="js/data.js?20201020"></script>
+  <script>
+    new Clipboard( "#copy" )
+  </script>
+  <script>
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').then(function(reg){
+        console.log('yes');
+      }).catch(function(err){
+        console.log('no', err);
+      })
+    }
+  </script>
+</body>
+</html>

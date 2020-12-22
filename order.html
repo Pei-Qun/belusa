@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="貝稑莎,鹹酥雞,高雄鹹酥雞,推薦鹹酥雞,鹽酥雞,炸物" />
+    <meta name="description" content="貝稑莎鹽酥雞點餐系統" />
+    <meta name="copyright" CONTENT="本網頁著作權貝稑莎所有">
+    <meta name="URL" content="https://pei-qun.github.io/belusa/">
+    <meta name="theme-color" content="#ff6670">
+  
+    <title>貝稑莎點餐平台</title>
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="css/all.css?20200108"> -->
+    <link rel="stylesheet" href="css/order.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  </head>
+<body>
+  <div class="wrap">
+    <div id="app" class="order">
+      <main class="main">
+        <h2>{{ currentVal }}</h2>
+      </main>
+      <footer>
+        <p>未取餐號碼</p>
+        <ul v-if="orderData">
+          <li v-for="(item, index) in orderData" v-show="item.foodDone">
+            <button class="btn-outline-primary">
+              {{ index }}
+            </button>
+          </li>
+        </ul>
+        <p>餐點製作中</p>
+        <ul v-if="orderData">
+          <li v-for="(item, index) in orderData" v-show="item.cardSend && !item.foodDone">
+            <button class="btn-outline-primary">
+              {{ index }}
+            </button>
+          </li>
+        </ul>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/jquery-2.0.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <!-- <script src="js/vue.js"></script> -->
+  
+  <!-- The core Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script> -->
+  <script src="js/order.js"></script>
+</body>
+</html>
